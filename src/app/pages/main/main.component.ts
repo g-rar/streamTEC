@@ -12,16 +12,18 @@ import { ProductService } from 'src/app/services/product/product.service';
 export class MainComponent implements OnInit {
 
   products:Product[];
+  showRegister:boolean;
   constructor(private productsController:ProductService, private auth:AuthService) { }
 
   ngOnInit() {
     if(this.auth.isLoggedIn()){
-      console.log("User logged");
       if(this.auth.getUser().subscription == "demand" || this.auth.getUser().subscription == 'premium'){
         this.productsController.getProducts().then(products => {
           this.products = products
         }).catch(err => console.error(err))
       }
+    } else {
+      this.showRegister = true;
     }
   }
 }

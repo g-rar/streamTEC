@@ -21,7 +21,6 @@ export class AuthService {
       this.firebaseUser = data;
       if(data){        
         db.getUser(data.uid).then(data =>{
-          console.log("data",data.data());          
           localStorage.setItem('userLogged', JSON.stringify(data.data()));
         })
 

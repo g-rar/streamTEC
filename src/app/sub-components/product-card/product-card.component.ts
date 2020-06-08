@@ -16,7 +16,6 @@ export class ProductCardComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit() {
-    console.log(this.product);
     if(this.product.type === "music"){
       this.song = this.product as MusicTrack
     } else {

@@ -2,3 +2,17 @@
 <div class="container">
     <app-product-card *ngFor="let prod of products" [product]="prod"></app-product-card>
 </div>
+<div *ngIf="showRegister" class="initial-page-register">
+    <div>
+        <h1>Ingresa para disfrutar de nuestros contenidos</h1>
+    </div>
+    <hr>
+    <div class="btn-group">
+        <a href="/login">
+            <button mat-button class="btn-main">Inicia sesión</button>
+        </a>
+        <a href="/register">
+            <button mat-button class="btn-secondary">Registrate</button>
+        </a>
+    </div>
+</div>

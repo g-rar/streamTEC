@@ -87,6 +87,10 @@ export class ProductViewComponent implements OnInit {
   }
 
   alertUpgrade(){
-    alert("Para ver el video tienes que cambiar de plan o comprar el producto")
+    if(this.user != null){
+      alert("Para ver el video tienes que cambiar de plan o comprar el producto")
+    } else {
+      alert("Tienes que registrarte para poder ver o comprar el producto")
+    }
   }
 }

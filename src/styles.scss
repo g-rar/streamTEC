@@ -1,1 +1,207 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+// $stream-tec-primary: mat-palette($mat-indigo);
+// $stream-tec-accent:  mat-palette($mat-pink, A200, A100, A400);
+
+// // The warn palette is optional (defaults to red).
+// $stream-tec-warn:    mat-palette($mat-red);
+
+// // Create the theme object (a Sass map containing all of the palettes).
+// $stream-tec-theme: mat-light-theme($stream-tec-primary, $stream-tec-accent, $stream-tec-warn);
+
+// // Include theme styles for core and each component used in your app.
+// // Alternatively, you can import and @include the theme mixins for each component
+// // that you are using.
+// @include angular-material-theme($stream-tec-theme);
+
+:root {
+    --color-main: #659F92;
+    --color-main2: #82B0A6;
+    --color-main3: #8EB8AF;
+    --color-main4: #9BC0B8;
+    --color-main5: #A7C8C1;
+    --color-dark: rgb(41, 110, 95);
+    --color-secondary: #691E2D;
+    --color-secondary1:#7F2436;
+    --color-secondary2:#8F283D;
+    --color-secondary3:#9F2D44;
+    --color-secondary4:#AF314B;
+    --color-bright: #F5F4F4;
+    --color-text: rgb(223, 223, 223);
+    --color-text2: rgb(187, 187, 187);
+    --color-text3: rgb(150, 150, 150);
+    --color-bg: #1e1e1e;
+    --color-bg1: #292929;
+    --color-bg2: #333333;
+    --color-bg3: #3d3d3d;
+    --color-bg4: #3d3d3d;
+    --color-bg5: #474747;
+    --color-alert: #ff0000;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    margin: 0 4rem 0 6rem;
+    padding: 0;
+}
+
+.toolbar {
+    height: 60px;
+    padding: 0px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-main);
+    font-weight: 600;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+}
+
+.main_title {
+    display: flex;
+    align-items: center;
+    color: black;
+    font-size: x-large;
+    svg {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+}
+
+
+.btn-toolbar {
+    fill: var(--color-dark);
+    transition: 200ms ease;
+    :hover{
+        fill: rgba(0, 0, 0, 0.733);
+    }
+}
+
+
+
+/*================= Forms ================*/
+.text-input {
+    display: block;
+    margin: .3rem 0 .75rem .5rem;
+    padding: 3px;
+    border-radius: 5px;
+    border: 0;
+}
+
+.radio-input{
+    margin: 0 .4rem 0 1rem;
+}
+
+/*================ Buttons ===============*/
+
+.btn-row {
+    margin: 0.5rem;
+    margin-right: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-main{
+    background: var(--color-main2);
+    color: var(--color-bg); 
+}
+
+.btn-secondary{
+    background: var(--color-secondary);
+    color: var(--color-bright);
+}
+
+.btn-small {
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.btn-alert {
+    background: var(--color-alert);
+    color: var(--color-bright)
+}
+
+/*=================== mat card ===========*/
+.card {
+    margin: 2rem 0;
+    background: var(--color-bg2);
+    color: var(--color-text);
+}
+
+.card2 {
+    margin-top: 2rem;
+    background: var(--color-bg3);
+    color: var(--color-text);
+}
+
+/*============= Page content ============*/
+
+.page-content {
+    margin: 2rem 5rem;
+    background-color: var(--color-bg1);
+    padding: 1rem 2rem;
+    border-radius: 15px;
+}
+
+.page-content p {
+    margin-top: 1rem;
+    margin-left: 2rem;
+    font-weight: 500;
+}
+
+.page-content h1 {
+    font-weight: 900;
+}
+
+.text-alert {
+    color: var(--color-alert);
+}
+
+/*=============Overlays==========*/
+.overlay-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    background: var(--color-bg);
+    border-radius: 15px;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 5px 15px black;
+}
+
+.overlay-bg {
+    background: var(--color-bg);
+    opacity: 40%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+/*============== Table =================*/
+.page-content table {
+    width: 100%;
+    background: var(--color-bg2);
+    border-radius: 15px;
+}
+
+.page-content table td{
+    text-align: center;
+}
+

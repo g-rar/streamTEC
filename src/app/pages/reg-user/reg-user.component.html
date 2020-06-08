@@ -1,0 +1,40 @@
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>
+            ¡No esperes más para unirte!
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>
+            Necesitamos tu información para poder brindarte 
+            el mejor servicio posible. Así que ¡no esperés más! 
+            Ingresá tus datos para empezar a disfrutar todo el 
+            contenido de entretenimiento que tenemos para ti.
+        </p>
+        <form [formGroup]="regUserForm" (ngSubmit)="regBtnSubmit(regUserForm.value)">
+            <span>Nombre</span>
+            <input type="text" class="text-input" formControlName="name">
+            <span>Apellidos</span>
+            <input type="text" class="text-input" formControlName="lastName">
+            <span>Correo electrónico</span>
+            <input type="email" class="text-input"formControlName="email">
+            <span>Teléfono</span>
+            <input type="tel" class="text-input" formControlName="phoneNumber">
+            <span>Pais</span>
+            <input type="text" class="text-input" formControlName="country">
+            <span>Ciudad</span>
+            <input type="text" class="text-input" formControlName="city">
+            <span>Direccion</span>
+            <input type="text" class="text-input" formControlName="direction">
+            <span>Fecha de nacimiento</span>
+            <input type="date" class="text-input" formControlName="birthDate">
+            <span>Constraseña</span>
+            <input type="password" class="text-input" formControlName="password">
+            <span>Repita la contraseña</span>
+            <input type="password" class="text-input" formControlName="repeatPassword">
+            
+            <button mat-button class="btn-main" style="margin-top: 1.5rem;">Registrarse</button>
+        </form>
+    </mat-card-content>
+</mat-card>
+

@@ -1,0 +1,19 @@
+<h1>
+    Detalles del prefil
+</h1>
+<mat-card class="card">
+    <mat-card-content>
+        <p>Nombre: {{user.name}} </p>
+        <p>Apellidos: {{user.lastName}} </p>
+        <p>Correo: {{user.email}} </p>
+        <p>Telefono: {{user.phoneNumber}} </p>
+        <p>País: {{user.country}} </p>
+        <p>Ciudad: {{user.city}} </p>
+        <p>Dirección: {{user.direction}} </p>
+        <p>Suscripcion: {{user.subscription}} </p>
+        <button mat-button class="btn-secondary">Actualiza tu plan</button>
+        <p>Colección: </p>
+        <button mat-button class="btn-main">Ver mi colección</button>
+    </mat-card-content>
+    <button mat-button class="btn-alert" (click)="logOut()">Cerrar sesión</button>
+</mat-card>

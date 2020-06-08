@@ -1,0 +1,20 @@
+<div class="side-menu">
+    <ul class="side-menu-nav">
+        <li class="nav-item">
+            <a *ngIf="!auth.isLoggedIn()" href="/login" class="side-menu-link">
+                <span class="nav-icon" [inlineSVG]="'assets/svg/login.svg'"></span>
+            </a>
+            <a *ngIf="auth.isLoggedIn()" href="/profile" class="side-menu-link">
+                <span class="nav-icon" [inlineSVG]="'assets/svg/user.svg'"></span>
+            </a>
+        </li>
+        <hr/>
+        <li class="nav-item" *ngFor="let elem of navElements">
+            <a href="{{elem.path}}" class="side-menu-link">
+                <span class="nav-icon" [inlineSVG]="elem.icon"></span>
+                <!-- En realidad quiero que el texto se muestre onHover -->
+                <!-- aquí el cómo se hace: https://www.w3schools.com/css/tryit.asp?filename=trycss_tooltip -->
+            </a>
+        </li>
+    </ul>
+</div>

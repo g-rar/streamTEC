@@ -1,0 +1,26 @@
+<h1>Mientras más contenido para los usuarios, mejor :D</h1>
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>Ayúdanos añadiendo nuevo contenido de youtube</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p>Inserte la URL aquí</p>
+        <input type="text" class="text-input" style="display: unset;" [(ngModel)]="contentURL">
+        <p>Ingrese un precio para este producto</p>
+        <input type="number" class="text-input" style="display: unset;" [(ngModel)]="productPrice">
+        <button mat-button class="btn-secondary" style="margin-left: 2rem;" (click)="lookForVideo(contentURL)">Añadir video</button>
+        <p>Para música indique el album y canales:</p>
+        <input type="text" class="text-input" style="display: unset;" [(ngModel)]="album">
+        <input type="radio" class="radio-input" value="stereo" name="channel" [(ngModel)]="channelMode"><span>Estereo</span>
+        <input type="radio" class="radio-input" value="mono" name="channel" [(ngModel)]="channelMode"><span>Mono</span>
+        <button mat-button class="btn-main" style="margin-left: 2rem;" (click)="lookForTrack(contentURL, album, channelMode)">Añadir cancion</button>
+        <br>
+        <span style="color: red;" *ngIf="alertText != null">{{alertText}}</span>
+    </mat-card-content>
+    <app-product-card
+        *ngIf='actualProduct != null'
+        [product]='actualProduct'></app-product-card>
+        <br>
+    <button *ngIf='actualProduct != null' mat-button class="btn-main" (click)="confirmProduct()">Confirmar</button>
+    <button *ngIf='actualProduct != null' mat-button class="btn-secondary" (click)="resetProduct()">Cancelar</button>
+</mat-card>

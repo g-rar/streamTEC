@@ -1,0 +1,29 @@
+<h1>Accede para disfrutar de nuestro contenido</h1>
+<mat-card class="card">
+    <mat-card-content>
+        <mat-grid-list cols='6' rowHeight='13rem'>
+            <mat-grid-tile [colspan]='2'>
+                <form [formGroup]="loginForm" (ngSubmit)="submitLogin(loginForm.value)">
+                    <span>Email:</span>
+                    <input type="email" class="text-input" formControlName="email">
+                    <span>Contraseña:</span>
+                    <input type="password" class="text-input" formControlName="password">
+                    <button type="submit" mat-button class="btn-main">Acceder</button>    
+                </form>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <hr class="vertical-div">
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]='2'>
+                <p>
+                    ¿Aún no tienes una cuenta? ¡No esperes más para unirte!
+                </p>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <a href='register'>
+                    <button type="button" mat-button class="btn-secondary">Registrarse</button>
+                </a>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card-content>
+</mat-card>

@@ -5,6 +5,8 @@ import { GoogleServiceService } from '../google/google-service.service';
 import { Video, Product, MusicTrack } from 'src/app/models/product';
 import { FirestoreService } from '../firestore/firestore.service';
 import { resolve } from 'url';
+import { Playlist } from 'src/app/models/playlist';
+import { User } from 'src/app/models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +17,11 @@ export class ProductService {
   private factory:ProductFactory = new ProductFactory();
 
   constructor(private yt: GoogleServiceService, private db:FirestoreService) { }
+
+  buyProductForUser(user:User,product:Product){
+    user.ownedProducts.push(product.id)
+    return this.db.updateUser(user)
+  }
 
   getVideoFromUrl(url:string, price: number){
     return new Promise<Video>((resolve, reject)=>{
@@ -40,9 +47,24 @@ export class ProductService {
     return this.db.addProduct(newProduct)    
   }
 
+  addProductToPlaylist(userId:string, product:Product, list:Playlist){
+    list.productIDs.push(product.id)
+    return this.db.updatePlaylist(userId, list);
+  }
+
+  addNewPlayListWithProduct(userId:string, product:Product, name:string){
+    let newPlayList:Playlist = {
+      id: this.db.createNewID(),
+      name: name,
+      userID: userId,
+      productIDs: [product.id]
+    }
+    return this.db.updatePlaylist(userId, newPlayList)
+  }
+
   getProducts():Promise<Product[]>{
     return new Promise<Product[]>((resolve, reject) =>{
-      this.db.get('products').then(data => {
+      this.db.queryFor('products').then(data => {
         let res:Product[] = []
         data.docs.forEach(doc => {
           res.push(doc.data() as Product)
@@ -52,9 +74,17 @@ export class ProductService {
     })
   }
 
+  getProduct(id:string):Promise<Product>{
+    return new Promise((resolve, reject)=>{
+      this.db.get(`products/${id}`).then(data =>{
+        resolve(data.data() as Product)
+      }).catch(err => reject(err))
+    })
+  }
+
   getVideos():Promise<Video[]>{
     return new Promise<Video[]>((resolve, reject) => {
-      this.db.get('products', "video").then(data => {
+      this.db.queryFor('products', "video").then(data => {
         let res:Video[] = []
         data.docs.forEach(doc => {
           res.push(doc.data() as Video)
@@ -66,13 +96,27 @@ export class ProductService {
 
   getMusic():Promise<MusicTrack[]>{
     return new Promise<MusicTrack[]>((resolve, reject) => {
-      this.db.get('products', "music").then(data => {
+      this.db.queryFor('products', "music").then(data => {
         let res:MusicTrack[] = []
         data.docs.forEach(doc => {
           res.push(doc.data() as MusicTrack)
         })
         resolve(res)
       }).catch(err => reject(err))
+    })
+  }
+
+  getPlayListsFor(userId:string){
+    return new Promise<Playlist[]>((resolve, reject) =>{
+      this.db.queryFor(`users/${userId}/playlists`).then(data => {
+        let result = []
+        data.docs.forEach(doc => {
+          result.push(doc.data() as Playlist)
+        })
+        resolve(result)
+      }).catch(err => {
+        reject(err)
+      })
     })
   }
 }

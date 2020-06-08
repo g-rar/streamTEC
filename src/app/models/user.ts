@@ -1,7 +1,7 @@
 import { Product } from './product';
 
 export interface User {
-    subscription: "demand"|"music"|"videos"|"premium"
+    subscription: "demand"|"music"|"video"|"premium"
     phoneNumber: string
     birthDate: Date
     city: string
@@ -11,6 +11,6 @@ export interface User {
     lastName: string
     name: string
     id: string
-    ownedProducts: Product[]
+    ownedProducts: string[]
 }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product, MusicTrack, Video } from '../../models/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-card',
@@ -12,7 +13,7 @@ export class ProductCardComponent implements OnInit {
   song:MusicTrack;
   video:Video;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
     console.log(this.product);
@@ -21,6 +22,10 @@ export class ProductCardComponent implements OnInit {
     } else {
       this.video = this.product as Video
     }
+  }
+
+  viewProduct(){
+    this.router.navigate(['viewContent', this.product.id])
   }
 
 }

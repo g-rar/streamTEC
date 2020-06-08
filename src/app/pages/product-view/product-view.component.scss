@@ -1,0 +1,30 @@
+.product-display {
+    display: grid;
+    grid-template-areas: 
+        "vid des"
+        "bt1 bt2";
+}
+
+.player{
+    position: relative;
+    grid-area: "vid";
+}
+
+.blocker {
+    z-index: 200;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.product-description{
+    grid-area: "des";
+    margin-left: 2rem;
+}
+
+.product-options {
+    display: grid;
+    grid-template-areas: 
+        "bt1 bt2";
+}
+

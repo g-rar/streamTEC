@@ -2,6 +2,7 @@
     margin: 10px;
     display: inline-block;
     overflow: hidden;
+    cursor: pointer;
 }
 
 p {
@@ -13,7 +14,8 @@ p {
     position: relative;
     z-index: 10;
     max-width: 205px;
-    max-lines: 2;
+    max-height: 2.6rem;
+    overflow: hidden;
 }
 
 .prod-auth{
@@ -52,7 +54,7 @@ p {
     bottom: -10px;
     right: -10px;
     fill: var(--color-secondary3);
-    opacity: 35%;
+    opacity: 45%;
     transform: matrix(-1, 0, 0, 1, 0, 0);
 }
 

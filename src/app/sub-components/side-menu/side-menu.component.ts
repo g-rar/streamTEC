@@ -15,15 +15,13 @@ export class SideMenuComponent implements OnInit {
     {path: '/music', icon: Icon.MUSIC,text:''},
   ]
 
-  onDemandElement = {path: '/owned', icon: Icon.LIST,text:''}
+  forLogged = {path: '/collection', icon: Icon.LIST,text:''}
 
   constructor(private auth:AuthService) { }
 
   ngOnInit() {
     if(this.auth.isLoggedIn()){
-      if(this.auth.getUser().subscription === "demand"){
-        this.navElements.push(this.onDemandElement)
-      }
+      this.navElements.push(this.forLogged)
     }
   }
 }

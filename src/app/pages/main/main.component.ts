@@ -17,7 +17,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     if(this.auth.isLoggedIn()){
       console.log("User logged");
-      if(this.auth.getUser().subscription == "demand"){
+      if(this.auth.getUser().subscription == "demand" || this.auth.getUser().subscription == 'premium'){
         this.productsController.getProducts().then(products => {
           this.products = products
         }).catch(err => console.error(err))

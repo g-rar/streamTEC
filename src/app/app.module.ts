@@ -13,6 +13,7 @@ import { MusicComponent } from './pages/music/music.component';
 import { OwnedComponent } from './pages/owned/owned.component';
 
 import { AngularFireModule } from '@angular/fire/';
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { SideMenuComponent } from './sub-components/side-menu/side-menu.component';
@@ -63,6 +64,7 @@ var firebaseConfig = {
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    NgxYoutubePlayerModule.forRoot(),
     HttpClientModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,

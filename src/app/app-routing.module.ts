@@ -8,6 +8,7 @@ import { OwnedComponent } from './pages/owned/owned.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AddContentComponent } from './pages/add-content/add-content.component';
+import { ProductViewComponent } from './pages/product-view/product-view.component';
 
 
 const routes: Routes = [
@@ -15,10 +16,11 @@ const routes: Routes = [
   {path: 'music', component: MusicComponent},
   {path: 'videos', component: VideosComponent},
   {path: 'register', component: RegUserComponent},
-  {path: 'owned', component:OwnedComponent},
+  {path: 'collection', component:OwnedComponent},
   {path: 'profile', component:ProfileComponent},
   {path: 'login', component:LoginComponent},
-  {path: 'addContent', component:AddContentComponent}
+  {path: 'addContent', component:AddContentComponent},
+  {path: 'viewContent/:id', component:ProductViewComponent}
 ];
 
 @NgModule({

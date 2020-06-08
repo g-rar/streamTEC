@@ -1,1 +1,43 @@
-<p>product-view works!</p>
+<p>product-view works! Also the video: </p>
+<mat-card class="card" *ngIf="product != null">
+    <mat-card-header>
+        <mat-card-title>
+            {{product.title}}
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="product-display">
+            <div class="player">
+                <div class="blocker" *ngIf="!canView" (click)="alertUpgrade()"></div>
+                <youtube-player *ngIf="product != null" [videoId] = 'product.id' class="player"></youtube-player>
+            </div>
+            <p class="product-description">
+                {{product.description}}
+            </p>
+            <div class="product-options" *ngIf="user != null">
+                <button mat-button class="btn-main" *ngIf="!ownsProduct" (click)="buyProduct()">Comprar</button>
+                <button mat-button class="btn-secondary" (click)="addToPlayList()">Anadir a playlist</button>
+            </div>
+            <div class="product-options" *ngIf="user == null">
+                <a href="/register">
+                    <button mat-button class="btn-main" *ngIf="user == null">Comprar</button>
+                </a>
+            </div>
+        </div>
+        <div *ngIf="showPlayList">
+            <p>
+                Elija a cual lista desea añadir este producto
+            </p>
+            <select [(ngModel)]="selectedList">
+                <option *ngFor="let list of playLists" [ngValue]="list">{{list.name}}</option>
+            </select>
+            <button mat-button class="btn-secondary" (click)="confirmAddToPlayList()">Confirmar</button>
+            <p>
+                O cree una lista nueva, ingresando aquí el nombre:
+            </p>
+            <input type="text" class="text-input" [(ngModel)]="newPlayListName">
+            <button mat-button class="btn-main" (click)="createPlaylist()">Crear nueva lista</button>
+        </div>
+    </mat-card-content>
+    
+</mat-card>

@@ -19,7 +19,7 @@
             </div>
             <div class="product-options" *ngIf="user != null">
                 <button mat-button class="btn-main" *ngIf="!ownsProduct" (click)="buyProduct()">Comprar</button>
-                <button mat-button class="btn-secondary" (click)="addToPlayList()">Anadir a playlist</button>
+                <button mat-button class="btn-secondary" *ngIf="canView" (click)="addToPlayList()">Anadir a playlist</button>
             </div>
             <div class="product-options" *ngIf="user == null">
                 <a href="/register">

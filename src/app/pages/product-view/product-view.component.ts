@@ -16,6 +16,7 @@ export class ProductViewComponent implements OnInit {
   product: Product = null;
   canView:boolean = false;
   ownsProduct:boolean = false;
+  birthdaySeason:boolean = false;
   showPlayList:boolean = false;
   newPlayListName:string = '';
   selectedList:Playlist;
@@ -37,6 +38,7 @@ export class ProductViewComponent implements OnInit {
         this.user = this.auth.getUser()
         if(this.auth.isBirthMonth()){
           alert("Es temporada de tu cumpleaños, así que hicimos una oferta para tí")
+          this.birthdaySeason = true
           this.product.price = this.product.price * 0.95
         }
         if (this.user.ownedProducts.includes(this.product.id)){

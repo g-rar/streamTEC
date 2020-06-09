@@ -93,6 +93,7 @@ export class AuthService {
   changePlan(newPlan:"demand"|"music"|"video"|"premium"){
     let newUser = this.getUser()
     newUser.subscription = newPlan
+    localStorage.setItem('userLogged', JSON.stringify(newUser));
     return this.db.updateUser(newUser)
   }
 

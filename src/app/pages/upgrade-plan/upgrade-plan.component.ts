@@ -22,8 +22,6 @@ export class UpgradePlanComponent implements OnInit {
     }
     this.subType = this.auth.getUser().subscription
     if(this.auth.isBirthMonth()){
-      console.log("mes de cumplea;os");
-      
       this.musicPrice = this.musicPrice * 0.95
       this.videoPrice = this.videoPrice * 0.95
       this.premiumPrice = this.premiumPrice * 0.95

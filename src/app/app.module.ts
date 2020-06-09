@@ -8,8 +8,6 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './pages/main/main.component';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { RegUserComponent } from './pages/reg-user/reg-user.component';
-import { VideosComponent } from './pages/videos/videos.component';
-import { MusicComponent } from './pages/music/music.component';
 
 import { AngularFireModule } from '@angular/fire/';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
@@ -47,8 +45,6 @@ var firebaseConfig = {
     MainComponent,
     SideMenuComponent,
     RegUserComponent,
-    VideosComponent,
-    MusicComponent,
     ProfileComponent,
     LoginComponent,
     AddContentComponent,

@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './pages/main/main.component';
-import { MusicComponent } from './pages/music/music.component';
-import { VideosComponent } from './pages/videos/videos.component';
 import { RegUserComponent } from './pages/reg-user/reg-user.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -14,8 +12,8 @@ import { UpgradePlanComponent } from './pages/upgrade-plan/upgrade-plan.componen
 
 const routes: Routes = [
   {path: '', component: MainComponent},
-  {path: 'music', component: MusicComponent},
-  {path: 'videos', component: VideosComponent},
+  {path: 'music', component: MainComponent},
+  {path: 'videos', component: MainComponent},
   {path: 'register', component: RegUserComponent},
   {path: 'collection', component:CollectionComponent},
   {path: 'profile', component:ProfileComponent},

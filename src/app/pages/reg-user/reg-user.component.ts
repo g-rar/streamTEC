@@ -24,6 +24,9 @@ export class RegUserComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    if(this.auth.isLoggedIn()){
+      this.router.navigate(['/'])
+    }
     this.regUserForm = this.formBuilder.group({
       name:'',
       lastName:'',

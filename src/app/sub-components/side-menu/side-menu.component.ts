@@ -10,6 +10,8 @@ import {Icon} from '../../classes/icons';
 export class SideMenuComponent implements OnInit {
 
   isLogged = false;
+  loggedIcon = Icon.USER;
+  loginIcon = Icon.LOGIN
 
   navElements = [
     {path: '/', icon: Icon.HOME, text: ''},

@@ -22,7 +22,7 @@
                 <button mat-button class="btn-secondary" *ngIf="canView" (click)="addToPlayList()">Anadir a playlist</button>
             </div>
             <div class="product-options" *ngIf="user == null">
-                <a href="/register">
+                <a routerLink="/register">
                     <button mat-button class="btn-main" *ngIf="user == null">Registrarse</button>
                 </a>
             </div>

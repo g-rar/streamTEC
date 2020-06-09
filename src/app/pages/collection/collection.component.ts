@@ -4,6 +4,7 @@ import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ProductService } from 'src/app/services/product/product.service';
 import { Playlist } from 'src/app/models/playlist';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-collection',
@@ -17,7 +18,7 @@ export class CollectionComponent implements OnInit {
   productsInList: {name:string,products:Product[]}[] = []
   user: User
 
-  constructor(private auth:AuthService, private productController:ProductService) { }
+  constructor(private auth:AuthService, private productController:ProductService, private router:Router) { }
 
   ngOnInit() {
     if(this.auth.isLoggedIn()){
@@ -33,6 +34,8 @@ export class CollectionComponent implements OnInit {
           }).catch(err => console.error(err))
         }
       })
+    } else {
+      this.router.navigate[('/')]      
     }
   }
 

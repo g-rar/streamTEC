@@ -11,11 +11,11 @@
         <p>Ciudad: {{user.city}} </p>
         <p>Dirección: {{user.direction}} </p>
         <p>Suscripcion: {{user.subscription}} </p>
-        <a href="/upgrade">
+        <a routerLink="/upgrade">
             <button mat-button class="btn-secondary">Cambiar plan</button>
         </a>
         <p>Colección: </p>
-        <button mat-button class="btn-main">Ver mi colección</button>
+        <button mat-button class="btn-main" routerLink="/collection">Ver mi colección</button>
     </mat-card-content>
     <button mat-button class="btn-alert" (click)="logOut()">Cerrar sesión</button>
 </mat-card>

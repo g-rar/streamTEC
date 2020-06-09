@@ -48,15 +48,7 @@ export class FirestoreService {
     return this.db.doc(doc).get().toPromise()
   }
 
-  addField(){
-    this.db.collection('products').get().toPromise().then((data)=>{
-      data.docs.forEach((doc)=>{
-        if(doc.data().type == "music"){
-          doc.ref.set({price: 350},{merge: true})
-        } else {
-          doc.ref.set({price: 500},{merge: true})
-        }
-      })
-    })
+  getProductsInList(strList:string[]){
+    return this.db.collection('products/', ref => ref.where("id", "in", strList)).get().toPromise()
   }
 }

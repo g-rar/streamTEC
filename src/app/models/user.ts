@@ -1,5 +1,3 @@
-import { Product } from './product';
-
 export interface User {
     subscription: "demand"|"music"|"video"|"premium"
     phoneNumber: string

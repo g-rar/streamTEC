@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ProductBuilder } from 'src/app/classes/productBuilder';
-import { ProductFactory } from 'src/app/classes/productFactory';
 import { GoogleServiceService } from '../google/google-service.service';
 import { Video, Product, MusicTrack } from 'src/app/models/product';
 import { FirestoreService } from '../firestore/firestore.service';
@@ -14,7 +13,6 @@ import { User } from 'src/app/models/user';
 export class ProductService {
 
   private builder:ProductBuilder = new ProductBuilder();
-  private factory:ProductFactory = new ProductFactory();
 
   constructor(private yt: GoogleServiceService, private db:FirestoreService) { }
 
@@ -60,6 +58,28 @@ export class ProductService {
       productIDs: [product.id]
     }
     return this.db.updatePlaylist(userId, newPlayList)
+  }
+
+  getProductsInList(strList:string[], ordered?:boolean):Promise<Product[]>{
+    return new Promise<Product[]>((resolve, reject) => {
+      this.db.getProductsInList(strList).then((data) => {
+        let res = []
+        data.docs.forEach((doc)=>{
+          res.push(doc.data() as Product)
+        })
+        if(!ordered){
+          resolve(res)
+        } else {
+          let otherRes = []
+          for(let elem of strList){
+            otherRes.push(
+              res.find(prod => prod.id === elem)
+            )
+          }
+          resolve(otherRes)
+        }
+      }).catch(err => reject(err))
+    })
   }
 
   getProducts():Promise<Product[]>{

@@ -10,7 +10,6 @@ import { InlineSVGModule } from 'ng-inline-svg';
 import { RegUserComponent } from './pages/reg-user/reg-user.component';
 import { VideosComponent } from './pages/videos/videos.component';
 import { MusicComponent } from './pages/music/music.component';
-import { OwnedComponent } from './pages/owned/owned.component';
 
 import { AngularFireModule } from '@angular/fire/';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
@@ -27,6 +26,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { AddContentComponent } from './pages/add-content/add-content.component';
 import { ProductCardComponent } from './sub-components/product-card/product-card.component';
 import { ProductViewComponent } from './pages/product-view/product-view.component';
+import { CollectionComponent } from './pages/collection/collection.component';
+import { UpgradePlanComponent } from './pages/upgrade-plan/upgrade-plan.component';
 
 
 var firebaseConfig = {
@@ -48,12 +49,13 @@ var firebaseConfig = {
     RegUserComponent,
     VideosComponent,
     MusicComponent,
-    OwnedComponent,
     ProfileComponent,
     LoginComponent,
     AddContentComponent,
     ProductCardComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    CollectionComponent,
+    UpgradePlanComponent
   ],
   imports: [
     MatCardModule,

@@ -15,6 +15,9 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder:FormBuilder, private auth:AuthService,private router:Router) { }
 
   ngOnInit() {
+    if(this.auth.isLoggedIn()){
+      this.router.navigate(['/'])
+    }
     this.loginForm = this.formBuilder.group({
       email: '',
       password: ''
@@ -23,7 +26,9 @@ export class LoginComponent implements OnInit {
 
   submitLogin(formData){
     this.auth.logInWithEmailAndPassword(formData.email, formData.password)
-    .then(()=>this.router.navigate(['/']))
-    .catch(err => console.error(err))
+    .then(()=>{
+      this.router.navigate(['/'])
+      window.location.reload()
+    }).catch(err => console.error(err))
   }
 }

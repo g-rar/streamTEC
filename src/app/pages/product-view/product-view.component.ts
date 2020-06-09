@@ -35,6 +35,10 @@ export class ProductViewComponent implements OnInit {
       this.product = prod
       if(this.auth.isLoggedIn()){
         this.user = this.auth.getUser()
+        if(this.auth.isBirthMonth()){
+          alert("Es temporada de tu cumpleaños, así que hicimos una oferta para tí")
+          this.product.price = this.product.price * 0.95
+        }
         if (this.user.ownedProducts.includes(this.product.id)){
           this.canView = true
           this.ownsProduct = true
@@ -42,7 +46,9 @@ export class ProductViewComponent implements OnInit {
           this.canView = true
         } else if (this.user.subscription == "premium"){
           this.canView = true
-        } 
+        } else if (this.auth.isBirthDay()){
+          this.canView = true
+        }
       }
     }).catch(err => console.log(err))
   }

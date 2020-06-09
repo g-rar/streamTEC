@@ -1,0 +1,28 @@
+<h1>¡Aquí podés cambiar tu plan!</h1>
+<mat-card class="card">
+    <mat-card-header><mat-card-title>El premium es el mejor de todos</mat-card-title></mat-card-header>
+    <mat-card-content>
+        <p>
+            Puedes cancelar una suscripción en cualquier momento, 
+            pero solo podrás consumir los productos que hayas comprado.
+        </p>
+        <div>
+            <input type="radio" name="subscription" value="demand" [(ngModel)]="subType">
+            <span>Normal (gratis)</span>
+        </div>
+        <div>
+            <input type="radio" name="subscription" value="music" [(ngModel)]="subType">
+            <span>Musica ilimitada ({{musicPrice}})</span>
+        </div>
+        <div>
+            <input type="radio" name="subscription" value="video" [(ngModel)]="subType">
+            <span>Videos ilimitados ({{videoPrice}}) </span>
+        </div>
+                <div>
+            <input type="radio" name="subscription" value="premium" [(ngModel)]="subType">
+            <span>Premium, ambos ilimitados ({{premiumPrice}}) </span>
+        </div>
+        <br>
+        <button mat-button class="btn-main" (click)="changePlan()">Cambiar de plan</button>
+    </mat-card-content>
+</mat-card>

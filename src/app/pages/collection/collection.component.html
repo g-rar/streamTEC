@@ -1,0 +1,11 @@
+<h1>Esta es tu colección</h1>
+
+<mat-card class="card">
+    <mat-card-header><mat-card-title>Comprados</mat-card-title></mat-card-header>
+    <app-product-card *ngFor="let bought of boughtProducts" [product]="bought"></app-product-card>
+</mat-card>
+
+<mat-card class="card" *ngFor="let list of productsInList">
+    <mat-card-header><mat-card-title>{{list.name}}</mat-card-title></mat-card-header>
+    <app-product-card *ngFor="let item of list.products" [product]="item"></app-product-card>
+</mat-card>

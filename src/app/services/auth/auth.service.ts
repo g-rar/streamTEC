@@ -23,7 +23,6 @@ export class AuthService {
         db.getUser(data.uid).then(data =>{
           localStorage.setItem('userLogged', JSON.stringify(data.data()));
         })
-
       } else {
         localStorage.setItem('userLogged', null);  
       }
@@ -31,9 +30,14 @@ export class AuthService {
   }
 
   logInWithEmailAndPassword(email, password) {
-    return this.auth.auth.signInWithEmailAndPassword(email, password).then((value)=>{
-      window.location.reload();
-    }).catch(err => console.error(err));
+    return new Promise((resolve, reject)=>{
+      this.auth.auth.signInWithEmailAndPassword(email, password).then((value)=>{
+        this.db.getUser(value.user.uid).then(dUser => {
+          localStorage.setItem('userLogged', JSON.stringify(dUser.data()));
+          resolve()
+        })
+      }).catch(err => reject(err));
+    }) 
   }
 
   registerUserWithEmailAndPassword(email, password){
@@ -41,7 +45,12 @@ export class AuthService {
   }
 
   logOut() {
-    return this.auth.auth.signOut()
+    return new Promise((resolve, reject) => {
+      this.auth.auth.signOut().then(() => {
+        localStorage.setItem('userLogged', null);
+        resolve()
+      })
+    })
   }
 
   isLoggedIn(){
@@ -50,6 +59,41 @@ export class AuthService {
     } else {
       return false;
     }
+  }
+
+  isBirthDay(){
+    if(this.isLoggedIn()){
+      let today = new Date()
+      let user = this.getUser() as any
+      let userBirthday = new Date(0)
+      userBirthday.setSeconds(user.birthDate.seconds)
+      if(today.getUTCDate() == userBirthday.getUTCDate()
+      && today.getUTCMonth() == userBirthday.getUTCMonth()) {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
+
+  isBirthMonth(){
+    if(this.isLoggedIn()){
+      let today = new Date()
+      let user = this.getUser() as any
+      let userBirthday = new Date(0)
+      userBirthday.setSeconds(user.birthDate.seconds)
+      if(today.getUTCMonth() == userBirthday.getUTCMonth()) {
+        return true
+      } else {
+        return false
+      }
+    }
+  }
+
+  changePlan(newPlan:"demand"|"music"|"video"|"premium"){
+    let newUser = this.getUser()
+    newUser.subscription = newPlan
+    return this.db.updateUser(newUser)
   }
 
   getUser():User{

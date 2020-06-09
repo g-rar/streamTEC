@@ -11,9 +11,12 @@
                 <div class="blocker" *ngIf="!canView" (click)="alertUpgrade()"></div>
                 <youtube-player *ngIf="product != null" [videoId] = 'product.id' class="player"></youtube-player>
             </div>
-            <p class="product-description">
-                {{product.description}}
-            </p>
+            <div class="product-description">
+                <h2>Precio: c{{product.price}}</h2>
+                <p>
+                    {{product.description}}
+                </p>
+            </div>
             <div class="product-options" *ngIf="user != null">
                 <button mat-button class="btn-main" *ngIf="!ownsProduct" (click)="buyProduct()">Comprar</button>
                 <button mat-button class="btn-secondary" (click)="addToPlayList()">Anadir a playlist</button>

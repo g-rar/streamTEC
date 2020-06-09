@@ -9,6 +9,8 @@ import {Icon} from '../../classes/icons';
 })
 export class SideMenuComponent implements OnInit {
 
+  isLogged = false;
+
   navElements = [
     {path: '/', icon: Icon.HOME, text: ''},
     {path: '/videos', icon: Icon.VIDEO,text:''},
@@ -21,6 +23,7 @@ export class SideMenuComponent implements OnInit {
 
   ngOnInit() {
     if(this.auth.isLoggedIn()){
+      this.isLogged = true
       this.navElements.push(this.forLogged)
     }
   }

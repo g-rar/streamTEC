@@ -8,12 +8,12 @@
         <input type="text" class="text-input" style="display: unset;" [(ngModel)]="contentURL">
         <p>Ingrese un precio para este producto</p>
         <input type="number" class="text-input" style="display: unset;" [(ngModel)]="productPrice">
-        <button mat-button class="btn-secondary" style="margin-left: 2rem;" (click)="lookForVideo(contentURL)">Añadir video</button>
+        <button mat-button class="btn-secondary" style="margin-left: 2rem;" (click)="lookForVideo(contentURL, productPrice)">Añadir video</button>
         <p>Para música indique el album y canales:</p>
         <input type="text" class="text-input" style="display: unset;" [(ngModel)]="album">
         <input type="radio" class="radio-input" value="stereo" name="channel" [(ngModel)]="channelMode"><span>Estereo</span>
         <input type="radio" class="radio-input" value="mono" name="channel" [(ngModel)]="channelMode"><span>Mono</span>
-        <button mat-button class="btn-main" style="margin-left: 2rem;" (click)="lookForTrack(contentURL, album, channelMode)">Añadir cancion</button>
+        <button mat-button class="btn-main" style="margin-left: 2rem;" (click)="lookForTrack(contentURL, album, channelMode, productPrice)">Añadir cancion</button>
         <br>
         <span style="color: red;" *ngIf="alertText != null">{{alertText}}</span>
     </mat-card-content>

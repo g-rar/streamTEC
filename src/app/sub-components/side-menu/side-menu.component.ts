@@ -14,12 +14,12 @@ export class SideMenuComponent implements OnInit {
   loginIcon = Icon.LOGIN
 
   navElements = [
-    {path: '/', icon: Icon.HOME, text: ''},
-    {path: '/videos', icon: Icon.VIDEO,text:''},
-    {path: '/music', icon: Icon.MUSIC,text:''},
+    {path: '/', icon: Icon.HOME, text: 'Inicio'},
+    {path: '/videos', icon: Icon.VIDEO,text:'Videos'},
+    {path: '/music', icon: Icon.MUSIC,text:'Musica'},
   ]
 
-  forLogged = {path: '/collection', icon: Icon.LIST,text:''}
+  forLogged = {path: '/collection', icon: Icon.LIST,text:'Colección'}
 
   constructor(private auth:AuthService) { }
 

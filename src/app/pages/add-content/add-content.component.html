@@ -19,7 +19,8 @@
     </mat-card-content>
     <app-product-card
         *ngIf='actualProduct != null'
-        [product]='actualProduct'></app-product-card>
+        [product]='actualProduct'
+        [disabled]='true'></app-product-card>
         <br>
     <button *ngIf='actualProduct != null' mat-button class="btn-main" (click)="confirmProduct()">Confirmar</button>
     <button *ngIf='actualProduct != null' mat-button class="btn-secondary" (click)="resetProduct()">Cancelar</button>

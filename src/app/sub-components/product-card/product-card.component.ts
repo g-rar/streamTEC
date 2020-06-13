@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class ProductCardComponent implements OnInit {
 
   @Input() product:Product;
+  @Input() disabled:boolean = false;
   song:MusicTrack;
   video:Video;
 
@@ -24,7 +25,9 @@ export class ProductCardComponent implements OnInit {
   }
 
   viewProduct(){
-    this.router.navigate(['viewContent', this.product.id])
+    if(!this.disabled){
+      this.router.navigate(['viewContent', this.product.id])
+    }
   }
 
 }

@@ -42,7 +42,19 @@ export class RegUserComponent implements OnInit {
   }
 
   regBtnSubmit(formData){
-    if(this.pswVal.isPasswordValid(formData.password, formData.repeatPassword)){
+    if(formData.name === ''){
+      alert("Por favor ingrese un nombre")
+    } else if(formData.lastName === ''){
+      alert("Por favor ingrese al menos un apellido")
+    } else if(formData.email === ''){
+      alert("Por favor ingrese un correo electrónico")
+    } else if(formData.birthDate === ''){
+      alert("Por favor ingrese una fecha de nacimiento")
+    } else if(formData.password === ''){
+      alert("Por favor ingrese una contraseña")
+    } else if(formData.repeatPassword === ''){
+      alert("Por favor repita la contraseña")
+    }else if(this.pswVal.isPasswordValid(formData.password, formData.repeatPassword)){
       this.auth.registerUserWithEmailAndPassword(formData.email, formData.password)
       .then((d) => {
         let newUser:User = {
@@ -62,6 +74,8 @@ export class RegUserComponent implements OnInit {
           this.router.navigate(['/']);
         });
       })
-    }        
+    } else {
+      alert("Las contraseñas dadas o no coinciden o no son válidas. Se deben usar usar contraseñas que tengan letras mayúsculas, minúsculas, números y símbolos.")
+    }
   }
 }
